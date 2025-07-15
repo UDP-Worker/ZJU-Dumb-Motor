@@ -1,0 +1,76 @@
+# ============================
+# 通用忽略项
+# ============================
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# IDE/编辑器
+.vscode/
+*.code-workspace
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 日志、备份
+*.log
+*~
+*.bak
+*.tmp
+
+# ============================
+# Keil MDK‑ARM (uVision)
+# ============================
+# 输出文件
+*.axf
+*.hex
+*.bin
+*.lk
+*.map
+*.lss
+
+# 中间文件和临时目录
+Objects/
+Listing/
+# 如果你使用了 MDK‑ARM 5 的 CPack .dep 文件
+*.dep
+# uVision 自动生成的日志和渲染文件
+*.plg
+*.rtt
+*.usb
+*.uvguix
+
+# ============================
+# STM32CubeIDE / Eclipse CDT
+# ============================
+# 项目设置目录
+.settings/
+# 用户特定配置
+*.cproject.user
+*.project.user
+
+# STM32CubeMX 生成的工程文件
+*.mxproject
+project_spec.xml
+
+# 构建目录
+Debug/
+Release/
+# 如果你改名了构建文件夹，按需添加
+# build/
+# out/
+
+# CMake 及其它
+CMakeLists.txt.user
+cmake-build-*/
+
+# ============================
+# Optional: 其它工具／脚本
+# ============================
+# Makefile 生成的
+Makefile
+*.make
+
+# Python 环境
+__pycache__/
+*.py[cod]
