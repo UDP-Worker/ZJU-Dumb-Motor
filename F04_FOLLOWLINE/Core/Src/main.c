@@ -111,19 +111,26 @@ int main(void)
 
     if (left == GPIO_PIN_RESET && right == GPIO_PIN_RESET)
     {
-      Motor_Run(50, 10);
+      Motor_Run(100, 10);
     }
     else if (left == GPIO_PIN_SET && right == GPIO_PIN_RESET)
     {
-      Motor_Left(50, 10);
+      if (left == GPIO_PIN_SET && right == GPIO_PIN_RESET)
+      {
+        Motor_Right(10, 10);
+      }
     }
     else if (right == GPIO_PIN_SET && left == GPIO_PIN_RESET)
     {
-      Motor_Right(50, 10);
+      if (right == GPIO_PIN_SET && left == GPIO_PIN_RESET)
+      {
+        Motor_Left(10, 10);
+      }
     }
     else
     {
-      Motor_Brake(10);
+      Motor_Brake(100);
+
     }
   }
   /* USER CODE END 3 */

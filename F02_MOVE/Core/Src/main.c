@@ -95,14 +95,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    Motor_Back(50, 1000);
+    Motor_Back(60, 1000);
     Motor_Brake(500);
     Motor_Run(50, 1000);
     Motor_Brake(500);
-    Motor_Left(50, 1000);
-    Motor_Right(50, 1000);
-    Motor_SpinRight(50, 1000);
-    Motor_SpinLeft(50, 1000);
+    Motor_Left(2, 1000);
+    Motor_Brake(500);
+    Motor_Right(95, 1000);
     Motor_Brake(500);
   }
   /* USER CODE END 3 */
