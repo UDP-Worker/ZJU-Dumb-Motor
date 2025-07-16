@@ -130,7 +130,6 @@ int main(void)
     else
     {
       Motor_Brake(100);
-
     }
   }
   /* USER CODE END 3 */
