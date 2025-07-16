@@ -87,6 +87,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM5_Init();
+  Servo_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -94,11 +95,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   float angle = 0.0f;
-  float step = 2.0f;
+  float step = 4.0f;
 
   while (1)
   {
-    Servo_SetAngle(angle);
+    Servo_SetAngle(angle); //115-中点,180-极左，50-极右
     HAL_Delay(20);
     angle += step;
     if (angle >= 180.0f)
@@ -106,9 +107,9 @@ int main(void)
       angle = 180.0f;
       step = -step;
     }
-    else if (angle <= 0.0f)
+    else if (angle <= 50.0f)
     {
-      angle = 0.0f;
+      angle = 50.0f;
       step = -step;
     }
     /* USER CODE END WHILE */
