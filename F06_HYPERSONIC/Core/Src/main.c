@@ -102,7 +102,7 @@ int main(void)
   while (1)
   {
     float distance = Ultrasonic_Measure();
-    if (distance > 0 && distance < 40.0f)
+    if (distance > 0 && distance < 40.0f) //40->实际45cm
     {
       Beep_On();
     }
