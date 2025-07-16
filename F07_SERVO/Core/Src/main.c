@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "servo.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -88,7 +87,6 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM5_Init();
-  Servo_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -102,7 +100,6 @@ int main(void)
   {
     Servo_SetAngle(angle);
     HAL_Delay(20);
-
     angle += step;
     if (angle >= 180.0f)
     {
