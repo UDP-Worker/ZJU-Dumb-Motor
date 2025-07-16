@@ -20,10 +20,10 @@
 
 5. **配置蜂鸣器与按键**
    - 将 `PC3` 设置为 **GPIO_Output**，用于驱动蜂鸣器。
-   - 将 `PC2` 设置为 **GPIO_Input**，上拉模式，用作按键检测。
+   - 将 `PC2` 设置为 **GPIO_Input**,上拉模式,并启用外部中断 (GPIO_EXTI2) 用作按键检测。
 
 6. **开启必要的中断与外设时钟**
-   - 在 **NVIC Settings** 中启用 `SysTick` 中断（默认开启）。
+   - 在 **NVIC Settings** 中启用 `EXTI2` 中断，并保持 `SysTick` 中断开启。
    - CubeMX 会自动启用 GPIOA、GPIOB、GPIOC 以及 TIM4 的时钟，无需额外设置。
 
 7. **生成代码**
