@@ -13,7 +13,7 @@ extern "C" {
 #define LED1_Pin GPIO_PIN_2
 #define LED1_GPIO_Port GPIOD
 
-void MX_GPIO_Init(void);
+//void MX_GPIO_Init(void);
 
 #ifdef __cplusplus
 }
