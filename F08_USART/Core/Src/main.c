@@ -18,6 +18,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "ultrasonic.h"
+#include "uart_io.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -91,6 +94,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART1_UART_Init();
+  UART_IO_Init(&huart1);
+  Ultrasonic_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -99,6 +104,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    float distance = Ultrasonic_Measure();
+    printf("distance: %.2f cm\r\n", distance);
+    HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
