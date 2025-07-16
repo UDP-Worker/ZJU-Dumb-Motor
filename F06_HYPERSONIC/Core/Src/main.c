@@ -18,6 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "beep.h"
+#include "ultrasonic.h"
+#include "gpio.h"
+#include "tim.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -87,6 +91,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
+  Beep_Init();
+  Ultrasonic_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -95,6 +101,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    float distance = Ultrasonic_Measure();
+    if (distance > 0 && distance < 40.0f)
+    {
+      Beep_On();
+    }
+    else
+    {
+      Beep_Off();
+    }
+    HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
