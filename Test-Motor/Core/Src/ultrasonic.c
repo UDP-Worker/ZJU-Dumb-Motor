@@ -59,6 +59,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             uint32_t ticks = __HAL_TIM_GET_COUNTER(&htim2);
             last_distance = ticks * 100.0f / 58.0f; /* 100us tick */
 
+
             switch(active_pos)
             {
                 case US_POS_CENTER:
@@ -84,6 +85,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
                         enqueue(L10, 5 * TURN_MS);
                     }
                     break;
+
             }
 
             start = 0;
