@@ -1,0 +1,32 @@
+# STM32CubeMX 配置步骤
+
+以下步骤说明如何在 STM32CubeMX 中创建用于本目录示例程序的 `.ioc` 文件，请根据所使用的开发板型号进行调整，这里以 `STM32F103RCT6` 为例。
+
+1. **新建工程**
+   - 打开 STM32CubeMX，点击 **New Project**。
+   - 在 MCU/MPU Selector 中搜索并选择 `STM32F103RCT6`（LQFP64 封装）。
+
+2. **配置时钟**
+   - 在 **Clock Configuration** 标签页启用外部高速晶振 (HSE 8 MHz)。
+   - 开启 PLL，倍频系数设置为 9，使系统时钟达到 72 MHz。
+
+3. **配置 GPIO**
+   - 在 **Pinout & Configuration** 中，将下列引脚设为 **GPIO_Output**：
+     - `PA4` —— LCD_E/SCLK
+     - `PA5` —— LCD_CS
+     - `PA6` —— LCD_RST/SID
+     - `PB9` —— LCD_PSB
+     - `PA8` —— DIS_LED1
+     - `PA15` —— DIS_LED2
+     - `PA3` —— SYS_BEEP
+   - 将 `PA0`、`PA1`、`PA2` 以及 `PB0`~`PB7` 设为 **GPIO_Input**，上拉模式，用于按键检测。
+   - 如需串口调试，可将 `PA9` 配置为 **USART1_TX**，`PA10` 配置为 **USART1_RX**。
+
+4. **配置中断**
+   - 在 **NVIC Settings** 中保持 `SysTick` 中断开启，如需按键触发，可启用对应的 EXTI 中断。
+
+5. **生成代码**
+   - 在 **Project Manager** 中设定工程名称（例如 `LCD_Test`），选择合适的生成工具链。
+   - 点击 **Generate Code** 后，将生成的 `Core` 和 `Drivers` 目录替换到原工程位置，即可在 CLion 中继续开发。
+
+完成以上步骤后，即可获得可用于本示例的初始化代码。
