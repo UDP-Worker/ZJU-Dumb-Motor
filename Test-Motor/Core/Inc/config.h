@@ -15,7 +15,7 @@
 
 typedef enum {FOLLOW, AVOID, RECOVER} State;
 
-extern volatile uint8_t g_L, g_R;
+extern volatile uint8_t g_L, g_R, g_avoid_ir;
 extern volatile uint16_t us_dist[21];
 extern volatile uint8_t  us_idx;
 extern volatile State g_state;
