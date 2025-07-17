@@ -9,6 +9,7 @@
 #define BWD_MS         60
 #define BRAKE_MS       40
 #define D_SAFE         200
+#define AVOID_TIMEOUT  3000
 
 #include <stdbool.h>
 

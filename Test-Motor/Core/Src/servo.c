@@ -35,10 +35,6 @@ void Servo_SetAngle(float angle)
     uint32_t compare = (uint32_t)(scaled * 1000.0f + 249.0f);
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, compare);
 
-    if(angle > SERVO_CENTER_ANGLE)
-        Beep_On();
-    else
-        Beep_Off();
 }
 
 static int8_t sweep_idx = -10;
