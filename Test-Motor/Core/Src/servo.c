@@ -33,11 +33,21 @@ void Servo_SetAngle(float angle)
 }
 
 static int8_t sweep_idx = -10;
+static int8_t sweep_dir = 1;   /* 1 -> increasing, -1 -> decreasing */
 
 void Servo_SweepStep(void)
 {
-    sweep_idx++;
-    if(sweep_idx > 10) sweep_idx = -10;
+    sweep_idx += sweep_dir;
+    if(sweep_idx >= 10)
+    {
+        sweep_idx = 10;
+        sweep_dir = -1;
+    }
+    else if(sweep_idx <= -10)
+    {
+        sweep_idx = -10;
+        sweep_dir = 1;
+    }
 
     float angle = 100.0f + sweep_idx * 8.0f;
     Servo_SetAngle(angle);
