@@ -22,6 +22,7 @@
 #include "queue.h"
 #include "config.h"
 #include "servo.h"
+#include "beep.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -100,6 +101,7 @@ int main(void)
     /* USER CODE BEGIN 2 */
 
     Motor_Init();
+    Beep_Init();
     Servo_Init();
 
   /* USER CODE END 2 */
