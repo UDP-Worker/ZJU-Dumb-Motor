@@ -17,7 +17,7 @@ extern volatile uint8_t qi, qj;
 
 void enqueue(Act a, uint16_t t);
 void queue_tick(void);
-
+int is_empty(void);
 #ifdef __cplusplus
 }
 #endif

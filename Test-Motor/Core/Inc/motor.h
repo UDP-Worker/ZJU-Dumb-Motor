@@ -9,17 +9,17 @@
 extern "C" {
 #endif
 
-typedef enum {
-    MOTOR_RIGHT = 0,
-    MOTOR_LEFT
-} Motor_Channel;
+    typedef enum {
+        MOTOR_RIGHT = 0,
+        MOTOR_LEFT
+    } Motor_Channel;
 
-void Motor_Init(void);
-void motor_fwd(void);
-void motor_bwd(void);
-void motor_turn_left(void);
-void motor_turn_right(void);
-void motor_brake(void);
+    void Motor_Init(void);
+    void motor_fwd(void);
+    void motor_bwd(void);
+    void motor_turn_left(void);
+    void motor_turn_right(void);
+    void motor_brake(void);
 
 #ifdef __cplusplus
 }

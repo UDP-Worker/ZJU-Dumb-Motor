@@ -12,7 +12,7 @@ extern "C" {
 #define RIGHT_DIR_Pin GPIO_PIN_4
 #define RIGHT_DIR_GPIO_Port GPIOA
 
-void MX_GPIO_Init(void);
+//void MX_GPIO_Init(void);
 
 #ifdef __cplusplus
 }

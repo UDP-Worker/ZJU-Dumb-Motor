@@ -11,6 +11,10 @@ void enqueue(Act a, uint16_t t)
     q[qj] = (Cmd){a,t};
     qj = (qj + 1) & (QLEN - 1);
 }
+int is_empty(void)
+{
+    return (qi == qj);
+}
 
 void queue_tick(void)
 {

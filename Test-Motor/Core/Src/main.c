@@ -99,14 +99,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   Motor_Init();
-  enqueue(BRK, 40);
-  enqueue(L10, TURN_MS);
-  enqueue(FWD, FWD_MS);
+  enqueue(BRK, 3000);
+  enqueue(L10, 2000);
+  enqueue(FWD, 2000);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t cnt = 0;
   while (1)
   {
     /* USER CODE END WHILE */
