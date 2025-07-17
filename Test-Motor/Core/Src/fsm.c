@@ -1,6 +1,7 @@
 #include "fsm.h"
 #include "follow.h"
 #include "queue.h"
+#include "avoid.h"
 
 volatile State g_state = FOLLOW;
 
@@ -13,7 +14,12 @@ void fsm_tick(void)
     switch(g_state)
     {
         case FOLLOW:
-            if(++cnt >= 10)
+            if(front_blocked() && queue_is_empty())
+            {
+                avoid_plan();
+                g_state = AVOID;
+            }
+            else if(++cnt >= 10)
             {
                 cnt = 0;
                 follow_update();
