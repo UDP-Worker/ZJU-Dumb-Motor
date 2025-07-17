@@ -16,7 +16,8 @@ void servo_sweep(void)
     sweep_idx++;
     if(sweep_idx>10) sweep_idx=-10;
     us_idx = sweep_idx + 10;
-    float angle = 90.0f + sweep_idx*9.0f;
+    /* Servo scans from 50° to 180° with 115° as center */
+    float angle = 115.0f + sweep_idx*6.5f;
     Servo_SetAngle(angle);
     Ultrasonic_Trigger();
 }
