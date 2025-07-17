@@ -23,6 +23,7 @@
 #include "config.h"
 #include "servo.h"
 #include "beep.h"
+#include "ultrasonic.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -103,6 +104,7 @@ int main(void)
     Motor_Init();
     Beep_Init();
     Servo_Init();
+    Ultrasonic_Init();
 
   /* USER CODE END 2 */
 

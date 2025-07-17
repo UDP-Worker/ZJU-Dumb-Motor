@@ -1,6 +1,8 @@
 #include "servo.h"
 #include "main.h"
 #include "beep.h"
+#include "ultrasonic.h"
+#include "config.h"
 
 extern TIM_HandleTypeDef htim5;
 
@@ -58,4 +60,6 @@ void Servo_SweepStep(void)
 
     float angle = 100.0f + sweep_idx * 8.0f;
     Servo_SetAngle(angle);
+    us_idx = sweep_idx + 10;
+    Ultrasonic_StartMeasurement();
 }
