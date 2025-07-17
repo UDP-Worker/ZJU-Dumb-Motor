@@ -29,7 +29,7 @@ extern "C" {
 #define ECHO_Pin  GPIO_PIN_1
 #define ECHO_GPIO_Port GPIOC
 
-void MX_GPIO_Init(void);
+//void MX_GPIO_Init(void);
 
 #ifdef __cplusplus
 }
