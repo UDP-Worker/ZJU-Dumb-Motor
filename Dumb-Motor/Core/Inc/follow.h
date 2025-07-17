@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 void follow_update(void);
+void follow_read_sensors(void);
 
 #ifdef __cplusplus
 }

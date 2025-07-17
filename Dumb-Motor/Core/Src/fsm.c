@@ -11,6 +11,7 @@ static uint16_t recover_ms = 0;
 
 void fsm_tick(void)
 {
+    follow_read_sensors();
     switch(g_state){
         case FOLLOW:
             Beep_Off();
