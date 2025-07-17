@@ -21,7 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "motor.h"
+#include "servo.h"
+#include "ultrasonic.h"
+#include "beep.h"
+#include "queue.h"
+#include "fsm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,7 +99,10 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
-
+  Motor_Init();
+  Servo_Init();
+  Ultrasonic_Init();
+  Beep_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,6 +112,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    static uint32_t t_servo = 0;
+    if(HAL_GetTick() - t_servo >= 50){
+      t_servo = HAL_GetTick();
+      servo_sweep();
+    }
   }
   /* USER CODE END 3 */
 }
