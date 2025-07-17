@@ -14,7 +14,7 @@ void fsm_tick(void)
     follow_read_sensors();
     switch(g_state){
         case FOLLOW:
-            Beep_Off();
+            //Beep_Off();
             if(front_blocked() && qi==qj){
                 avoid_plan();
                 g_state = AVOID;
@@ -23,11 +23,13 @@ void fsm_tick(void)
             }
             break;
         case AVOID:
-            Beep_On();
-            if(qi==qj){
-                g_state = RECOVER;
-                recover_ms = 0;
-            }
+            g_state = FOLLOW;
+            //temporarily disable obstacle avoidance.
+            //Beep_On();
+            // if(qi==qj){
+            //     g_state = RECOVER;
+            //     recover_ms = 0;
+            // }
             break;
         case RECOVER:
             if(g_L || g_R) recover_ms = 0; else recover_ms++;

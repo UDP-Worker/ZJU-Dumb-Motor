@@ -8,7 +8,10 @@ int8_t sweep_idx = -10;
 
 bool front_blocked(void)
 {
-    return us_dist[10] < D_SAFE;
+    if (us_dist[9] < D_SAFE && us_dist[10]<D_SAFE && us_dist[11]<D_SAFE)
+        return 1;
+    return 0;
+
 }
 
 void servo_sweep(void)
