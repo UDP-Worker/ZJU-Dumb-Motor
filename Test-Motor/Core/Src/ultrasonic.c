@@ -3,6 +3,7 @@
 #include "tim.h"
 #include "config.h"
 #include "beep.h"
+#include "queue.h"
 
 extern TIM_HandleTypeDef htim2;
 
@@ -56,10 +57,27 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             uint32_t ticks = __HAL_TIM_GET_COUNTER(&htim2);
             last_distance = ticks * 100.0f / 58.0f; /* 100us tick */
             us_dist[us_idx] = (uint16_t)last_distance;
-            if(us_dist[10] < D_SAFE)
-                Beep_On();
-            else
-                Beep_Off();
+
+            /* centre measurement controls the buzzer */
+            if(us_idx == 10)
+            {
+                if(us_dist[10] < D_SAFE)
+                    Beep_On();
+                else
+                    Beep_Off();
+            }
+            /* left/right measurements trigger simple avoidance */
+            else if(us_idx == 20 && us_dist[20] < D_SAFE)
+            {
+                queue_clear();
+                enqueue(R10, 5 * TURN_MS);
+            }
+            else if(us_idx == 0 && us_dist[0] < D_SAFE)
+            {
+                queue_clear();
+                enqueue(L10, 5 * TURN_MS);
+            }
+
             start = 0;
         }
     }
