@@ -26,6 +26,7 @@
 #include "ultrasonic.h"
 #include "beep.h"
 #include "queue.h"
+#include "avoid.h"
 #include "fsm.h"
 /* USER CODE END Includes */
 
