@@ -74,7 +74,11 @@ void HAL_MspInit(void)
 
   /** DISABLE: JTAG-DP Disabled and SW-DP Disabled
   */
-  __HAL_AFIO_REMAP_SWJ_DISABLE();
+  /*
+   * 在使用 ST-Link 下载程序时，如不屏蔽该行将导致调试口被复用，
+   * 从而无法再次烧录程序。故此处保持默认的 JTAG/SWD 接口映射。
+   */
+  /* __HAL_AFIO_REMAP_SWJ_DISABLE(); */
 
   /* USER CODE BEGIN MspInit 1 */
 
