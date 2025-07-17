@@ -93,7 +93,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   LCD_Init();
   LCD_Clear();
-  LCD_Print("Hello LCD!\nZJU Dumb Motor");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,6 +101,7 @@ int main(void)
   while (1)
   {
     /* 主循环保持空闲，LCD 上的内容保持不变 */
+    LCD_Print("Hello LCD!\nZJU Dumb Motor");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
