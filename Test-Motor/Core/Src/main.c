@@ -21,6 +21,7 @@
 #include "motor.h"
 #include "queue.h"
 #include "config.h"
+#include "servo.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -95,18 +96,26 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM4_Init();
-  MX_TIM5_Init();
-  /* USER CODE BEGIN 2 */
+    MX_TIM5_Init();
+    /* USER CODE BEGIN 2 */
 
-  Motor_Init();
+    Motor_Init();
+    Servo_Init();
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint8_t cnt = 0;
+  static uint32_t t_servo = 0;
   while (1)
   {
+    if(HAL_GetTick() - t_servo >= 50)
+    {
+      t_servo = HAL_GetTick();
+      Servo_SweepStep();
+    }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
