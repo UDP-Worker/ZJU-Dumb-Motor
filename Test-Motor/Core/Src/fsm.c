@@ -2,6 +2,7 @@
 #include "follow.h"
 #include "queue.h"
 #include "avoid.h"
+#include "beep.h"
 
 volatile State g_state = FOLLOW;
 static uint32_t avoid_ticks = 0;
