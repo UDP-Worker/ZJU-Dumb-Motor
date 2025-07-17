@@ -50,20 +50,23 @@ void Servo_SweepStep(void)
     {
         case 0: /* centre */
             Servo_SetAngle(SERVO_CENTER_ANGLE);
-            us_idx = 10;
-            Ultrasonic_StartMeasurement();
+
+            Ultrasonic_StartMeasurement(US_POS_CENTER);
+
             sweep_state = 1;
             break;
         case 1: /* left */
             Servo_SetAngle(SERVO_LEFT_BOUNDARY);
-            us_idx = 20;
-            Ultrasonic_StartMeasurement();
+
+            Ultrasonic_StartMeasurement(US_POS_LEFT);
+
             sweep_state = 2;
             break;
         default: /* right */
             Servo_SetAngle(SERVO_RIGHT_BOUNDARY);
-            us_idx = 0;
-            Ultrasonic_StartMeasurement();
+
+            Ultrasonic_StartMeasurement(US_POS_RIGHT);
+
             sweep_state = 0;
             break;
     }
