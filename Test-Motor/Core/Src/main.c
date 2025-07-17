@@ -366,7 +366,12 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PC1 */
   GPIO_InitStruct.Pin = GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  /*
+   * The ECHO pin needs to generate an interrupt on both the rising and
+   * falling edges so that ultrasonic distance measurement can start and
+   * stop the timer correctly.
+   */
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
