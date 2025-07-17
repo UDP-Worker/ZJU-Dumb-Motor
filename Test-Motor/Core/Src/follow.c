@@ -37,12 +37,12 @@ void follow_update(void)
             break;
         case +1:
             enqueue(BWD, 10*BWD_MS);
-            enqueue(R10, 15*TURN_MS);
+            enqueue(R10, 10*TURN_MS);
             enqueue(FWD, FWD_MS/2);
             break;
         case -1:
             enqueue(BWD, 10*BWD_MS);
-            enqueue(L10, 15*TURN_MS);
+            enqueue(L10, 10*TURN_MS);
             enqueue(FWD, FWD_MS/2);
             break;
         default:

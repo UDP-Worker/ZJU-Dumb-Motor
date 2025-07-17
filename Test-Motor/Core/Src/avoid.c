@@ -4,7 +4,9 @@
 
 int front_blocked(void)
 {
-    return us_dist[10] < D_SAFE;
+    if (us_dist[8] < D_SAFE || us_dist[9] < D_SAFE || us_dist[10] < D_SAFE || us_dist[11] < D_SAFE || us_dist[12] < D_SAFE)
+        return 1;
+    return 0;
 }
 
 void avoid_plan(void)
