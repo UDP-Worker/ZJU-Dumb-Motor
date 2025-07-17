@@ -3,12 +3,13 @@
 #include "queue.h"
 #include "config.h"
 
-volatile uint8_t g_L = 0, g_R = 0;
+volatile uint8_t g_L = 0, g_R = 0, g_avoid_ir = 0;
 
 void ir_update(void)
 {
     g_L = (HAL_GPIO_ReadPin(IR_LEFT_GPIO_Port, IR_LEFT_Pin) == GPIO_PIN_SET);
     g_R = (HAL_GPIO_ReadPin(IR_RIGHT_GPIO_Port, IR_RIGHT_Pin) == GPIO_PIN_SET);
+    g_avoid_ir = (HAL_GPIO_ReadPin(AVOID_GPIO_Port, AVOID_Pin) == GPIO_PIN_RESET);
 }
 
 void follow_update(void)

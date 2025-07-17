@@ -27,6 +27,9 @@ extern "C" {
 #define IR_LEFT_Pin   GPIO_PIN_0
 #define IR_LEFT_GPIO_Port GPIOB
 
+#define AVOID_Pin     GPIO_PIN_1
+#define AVOID_GPIO_Port GPIOB
+
 //void MX_GPIO_Init(void);
 
 #ifdef __cplusplus
