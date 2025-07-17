@@ -19,6 +19,9 @@ void Ultrasonic_Init(void)
     /* enable DWT cycle counter for microsecond delay */
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+
+    for(int i=0;i<21;i++)
+        us_dist[i] = 1000;
 }
 
 void Ultrasonic_Trigger(void)

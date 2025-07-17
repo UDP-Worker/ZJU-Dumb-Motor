@@ -7,10 +7,15 @@
 static int8_t err = 0;
 static uint8_t step_cnt = 0;
 
-void follow_update(void)
+void follow_read_sensors(void)
 {
     g_L = (HAL_GPIO_ReadPin(IR_LEFT_GPIO_Port, IR_LEFT_Pin) == GPIO_PIN_RESET);
     g_R = (HAL_GPIO_ReadPin(IR_RIGHT_GPIO_Port, IR_RIGHT_Pin) == GPIO_PIN_RESET);
+}
+
+void follow_update(void)
+{
+    follow_read_sensors();
 
     if(qi!=qj) return;
 
