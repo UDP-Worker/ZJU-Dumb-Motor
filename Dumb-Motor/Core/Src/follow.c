@@ -14,10 +14,15 @@ void follow_update(void)
 
     if(qi!=qj) return;
 
-    if(!g_L && !g_R) err = 0;
-    else if(g_L && !g_R) err = +1;
-    else if(!g_L && g_R) err = -1;
-    else err = (err>0)?+2:-2;
+    if(!g_L && !g_R) {
+        err = 0;
+    } else if(g_L && !g_R) {
+        err = +1;
+    } else if(!g_L && g_R) {
+        err = -1;
+    } else { /* g_L && g_R */
+        err = (err>0)?+2:-2;
+    }
 
     if(err==0) step_cnt=0;
     else if(step_cnt<STEP_LIMIT) step_cnt++;
@@ -26,10 +31,13 @@ void follow_update(void)
         case 0: enqueue(FWD, FWD_MS); break;
         case +1: enqueue(R10, TURN_MS); enqueue(FWD, FWD_MS/2); break;
         case -1: enqueue(L10, TURN_MS); enqueue(FWD, FWD_MS/2); break;
-        default:
+        default: {
             enqueue(BRK, BRAKE_MS);
             enqueue(BWD, BWD_MS);
-            enqueue((err>0)?R10:L10, TURN_MS*2);
+            uint8_t turns = (g_L && g_R) ? 9 : 2; /* bigger turn when both sensors see black */
+            for(uint8_t k=0;k<turns;k++)
+                enqueue((err>0)?R10:L10, TURN_MS);
             break;
+        }
     }
 }
