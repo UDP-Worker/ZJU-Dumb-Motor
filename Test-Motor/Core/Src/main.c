@@ -18,6 +18,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "motor.h"
+#include "queue.h"
+#include "config.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -94,6 +97,11 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
+
+  Motor_Init();
+  enqueue(BRK, 40);
+  enqueue(L10, TURN_MS);
+  enqueue(FWD, FWD_MS);
 
   /* USER CODE END 2 */
 
