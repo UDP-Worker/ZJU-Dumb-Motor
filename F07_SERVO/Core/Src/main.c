@@ -99,7 +99,7 @@ int main(void)
 
   while (1)
   {
-    Servo_SetAngle(angle); //115-中点,180-极左，50-极右
+    Servo_SetAngle(100); //100-中点,180-极左，20-极右
     HAL_Delay(20);
     angle += step;
     if (angle >= 180.0f)
@@ -107,9 +107,9 @@ int main(void)
       angle = 180.0f;
       step = -step;
     }
-    else if (angle <= 50.0f)
+    else if (angle <= 20.0f)
     {
-      angle = 50.0f;
+      angle = 20.0f;
       step = -step;
     }
     /* USER CODE END WHILE */
