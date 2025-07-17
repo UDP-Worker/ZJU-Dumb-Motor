@@ -119,13 +119,7 @@ int main(void)
       servo_sweep();
     }
 
-    /* Sound the buzzer when an object is closer than the safe distance */
-    float dist = Ultrasonic_GetDistance();
-    if(dist > 0 && dist < 40.0f){
-      Beep_On();
-    }else{
-      Beep_Off();
-    }
+
   }
   /* USER CODE END 3 */
 }

@@ -4,6 +4,7 @@
 #include "queue.h"
 #include "config.h"
 #include "main.h"
+#include "beep.h"
 
 volatile State g_state = FOLLOW;
 static uint16_t recover_ms = 0;
@@ -12,6 +13,7 @@ void fsm_tick(void)
 {
     switch(g_state){
         case FOLLOW:
+            Beep_Off();
             if(front_blocked() && qi==qj){
                 avoid_plan();
                 g_state = AVOID;
@@ -20,6 +22,7 @@ void fsm_tick(void)
             }
             break;
         case AVOID:
+            Beep_On();
             if(qi==qj){
                 g_state = RECOVER;
                 recover_ms = 0;

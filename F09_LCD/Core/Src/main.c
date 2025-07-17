@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "lcd.h"
 
 /* USER CODE END Includes */
 
@@ -90,13 +91,16 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  LCD_Init();
+  LCD_Clear();
+  LCD_Print("Hello LCD!\nZJU Dumb Motor");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    /* 主循环保持空闲，LCD 上的内容保持不变 */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

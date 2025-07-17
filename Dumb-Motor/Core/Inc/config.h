@@ -8,7 +8,7 @@
 #define FWD_MS         60
 #define BWD_MS         60
 #define BRAKE_MS       40
-#define D_SAFE        400
+#define D_SAFE         40
 
 #include <stdbool.h>
 
