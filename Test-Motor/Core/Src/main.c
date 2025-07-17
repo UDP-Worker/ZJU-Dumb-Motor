@@ -99,9 +99,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   Motor_Init();
-  enqueue(BRK, 3000);
-  enqueue(L10, 2000);
-  enqueue(FWD, 2000);
 
   /* USER CODE END 2 */
 
