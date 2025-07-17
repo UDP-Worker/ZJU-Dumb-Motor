@@ -1,5 +1,6 @@
 #include "servo.h"
 #include "main.h"
+#include "beep.h"
 
 extern TIM_HandleTypeDef htim5;
 
@@ -24,12 +25,18 @@ void Servo_SetAngle(float angle)
      * 180° to 2.0 ms so that 100° becomes the new centre position.
      */
 
-    if (angle < 20.0f) angle = 20.0f;
-    if (angle > 180.0f) angle = 180.0f;
+    if (angle < SERVO_RIGHT_BOUNDARY) angle = SERVO_RIGHT_BOUNDARY;
+    if (angle > SERVO_LEFT_BOUNDARY)  angle = SERVO_LEFT_BOUNDARY;
 
-    float scaled = (angle - 20.0f) / 160.0f;          /* 0.0 .. 1.0  */
+    float scaled = (angle - SERVO_RIGHT_BOUNDARY) /
+                   (SERVO_LEFT_BOUNDARY - SERVO_RIGHT_BOUNDARY);          /* 0.0 .. 1.0  */
     uint32_t compare = (uint32_t)(scaled * 1000.0f + 249.0f);
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, compare);
+
+    if(angle > SERVO_CENTER_ANGLE)
+        Beep_On();
+    else
+        Beep_Off();
 }
 
 static int8_t sweep_idx = -10;
