@@ -8,12 +8,25 @@ static uint16_t rest = 0;
 
 void enqueue(Act a, uint16_t t)
 {
+    if(queue_is_full()) return;
     q[qj] = (Cmd){a,t};
     qj = (qj + 1) & (QLEN - 1);
 }
-int is_empty(void)
+
+int queue_is_empty(void)
 {
     return (qi == qj);
+}
+
+int queue_is_full(void)
+{
+    return (((qj + 1) & (QLEN - 1)) == qi);
+}
+
+void queue_clear(void)
+{
+    qi = qj = 0;
+    rest = 0;
 }
 
 void queue_tick(void)
