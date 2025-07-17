@@ -14,10 +14,14 @@
 5. **配置舵機 PWM (TIM5)**
    - 啟用 **TIM5** 的 **Channel1**，模式選擇 **PWM Generation CH1**，引腳使用 `PA0`。
    - 在 **Parameter Settings** 中設置 **Prescaler** 為 `143`，**Counter Period** 為 `9999`，產生約 50 Hz 的 PWM。
-6. **配置蜂鸣器**
+6. **配置超聲波測距 (TIM2 + EXTI)**
+   - `PC0` 設置為 **GPIO_Output**，作為 TRIG 信號。
+   - `PC1` 設置為 **GPIO_Input** 並啟用 **EXTI Line1**，觸發模式選擇 **Rising/Falling**，下拉輸入。
+   - 啟用 **TIM2**，`Prescaler` 設為 `7199`，`Period` 設為 `4999`，並在 **NVIC Settings** 中使能 `TIM2` 和 `EXTI1` 中斷。
+7. **配置蜂鸣器**
    - 將 `PC3` 设为 **GPIO_Output** 用于驱动蜂鸣器。
-7. **其他設置**
+8. **其他設置**
    - 在 **SYS** 選擇 `No Debug`，後續在 `stm32f1xx_hal_msp.c` 中確保 `__HAL_AFIO_REMAP_SWJ_DISABLE()` 行被註釋。
    - 保持 `SysTick` 中斷啟用以產生 1 ms 節拍。
-8. **生成程式碼**
+9. **生成程式碼**
    - 在 **Project Manager** 里設定工程名稱並生成 Makefile 或其他工具鏈專案，完成後即可在 CLion 中編譯。
