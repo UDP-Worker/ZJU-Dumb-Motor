@@ -16,8 +16,11 @@
 typedef enum {FOLLOW, AVOID, RECOVER} State;
 
 extern volatile uint8_t g_L, g_R;
-extern volatile uint16_t us_dist[21];
-extern volatile uint8_t us_idx;
+extern volatile uint16_t dist_center;
+extern volatile uint16_t dist_left;
+extern volatile uint16_t dist_right;
+
+typedef enum {US_POS_CENTER, US_POS_LEFT, US_POS_RIGHT} UltrasonicPos;
 extern volatile State g_state;
 
 #endif /* __CONFIG_H */

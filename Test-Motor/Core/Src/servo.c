@@ -37,25 +37,31 @@ void Servo_SetAngle(float angle)
 
 }
 
-static int8_t sweep_idx = -10;
-static int8_t sweep_dir = 1;   /* 1 -> increasing, -1 -> decreasing */
+/*
+ * Simplified sweeping logic: only measure at centre, left and right
+ * extremes.  The servo cycles through the three positions and triggers
+ * one ultrasonic measurement at each position.
+ */
+static uint8_t sweep_state = 0; /* 0 -> centre, 1 -> left, 2 -> right */
 
 void Servo_SweepStep(void)
 {
-    sweep_idx += sweep_dir;
-    if(sweep_idx >= 10)
+    switch (sweep_state)
     {
-        sweep_idx = 10;
-        sweep_dir = -1;
+        case 0: /* centre */
+            Servo_SetAngle(SERVO_CENTER_ANGLE);
+            Ultrasonic_StartMeasurement(US_POS_CENTER);
+            sweep_state = 1;
+            break;
+        case 1: /* left */
+            Servo_SetAngle(SERVO_LEFT_BOUNDARY);
+            Ultrasonic_StartMeasurement(US_POS_LEFT);
+            sweep_state = 2;
+            break;
+        default: /* right */
+            Servo_SetAngle(SERVO_RIGHT_BOUNDARY);
+            Ultrasonic_StartMeasurement(US_POS_RIGHT);
+            sweep_state = 0;
+            break;
     }
-    else if(sweep_idx <= -10)
-    {
-        sweep_idx = -10;
-        sweep_dir = 1;
-    }
-
-    float angle = 100.0f + sweep_idx * 8.0f;
-    Servo_SetAngle(angle);
-    us_idx = sweep_idx + 10;
-    Ultrasonic_StartMeasurement();
 }
