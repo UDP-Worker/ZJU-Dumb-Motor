@@ -2,7 +2,6 @@
 #define __ULTRASONIC_H
 
 #include "stm32f1xx_hal.h"
-#include "config.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,7 +10,7 @@ extern "C" {
 void Ultrasonic_Init(void);
 void Ultrasonic_Trigger(void);
 float Ultrasonic_GetDistance(void);
-void Ultrasonic_StartMeasurement(UltrasonicPos pos);
+void Ultrasonic_StartMeasurement(void);
 
 #ifdef __cplusplus
 }

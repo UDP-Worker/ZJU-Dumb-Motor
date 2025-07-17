@@ -1,5 +1,4 @@
 #include "config.h"
 
-volatile uint16_t dist_center = 1000;
-volatile uint16_t dist_left   = 1000;
-volatile uint16_t dist_right  = 1000;
+volatile uint16_t us_dist[21] = {1000};
+volatile uint8_t  us_idx = 0;

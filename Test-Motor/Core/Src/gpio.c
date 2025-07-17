@@ -23,4 +23,10 @@ void MX_GPIO_Init(void)
 
     GPIO_InitStruct.Pin = BEEP_Pin;
     HAL_GPIO_Init(BEEP_GPIO_Port, &GPIO_InitStruct);
+
+    /* Configure IR avoid input */
+    GPIO_InitStruct.Pin = AVOID_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(AVOID_GPIO_Port, &GPIO_InitStruct);
 }

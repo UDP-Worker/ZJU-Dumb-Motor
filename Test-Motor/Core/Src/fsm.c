@@ -13,6 +13,14 @@ void fsm_tick(void)
 
     ir_update();
 
+    if(g_avoid_ir && queue_is_empty())
+    {
+        queue_clear();
+        enqueue(BWD, 12*BWD_MS);
+        enqueue(L10, 20*TURN_MS);
+        return;
+    }
+
     switch(g_state)
     {
         case FOLLOW:
